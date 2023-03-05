@@ -1,0 +1,116 @@
+.outer {
+    height: 98vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    overflow-y: auto;
+
+    font-family: 'Noto Sans KR', sans-serif;
+}
+.inner {
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.front {
+    margin-bottom: 100px;
+    text-align: center;
+}
+.cardendl {
+    width: 90vw;
+    height: 100px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: left;
+    margin-bottom: 40px;
+
+    /*border: 1px solid rgb(207, 207, 207);*/
+}
+
+.day {
+    font-weight: 700;
+    font-size: 25px;
+    background: rgb(67,133,246);
+    background: linear-gradient(90deg, rgba(67,133,246,1) 0%, rgba(143,0,211,1) 100%);
+    color: transparent;
+    -webkit-background-clip: text;
+}
+.week {
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.card {
+    width: 90vw;
+    height: 300px;
+    border-radius: 12px;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: left;
+    margin-bottom: 40px;
+
+    /*border: 1px solid rgb(207, 207, 207);*/
+}
+.cardimg {
+    margin-top: 16px;
+    margin-bottom: 10px;
+    width: 90%;
+    height: 200px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+.cardtitle {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.btncontain {
+    width: 100vw;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background: white;
+    position: fixed;
+}
+
+.btn {
+    margin-top: 20px;
+    color: white;
+    background-color: #4385F6;
+    /* background-color: white; */
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 18px;
+    width: 90vw;
+    height: 50px;
+    text-decortion: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    outline: 0;
+    border: 0;
+
+    transition: all .2s ease-out;
+}
+.btn:active {
+    scale: 98%;
+    transition: all .2s ease-out;
+}
+
+.icon {
+    margin-right: 10px;
+    width: 20px;
+}
