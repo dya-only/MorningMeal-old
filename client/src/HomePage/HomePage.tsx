@@ -9,22 +9,10 @@ const HomePage = (): JSX.Element => {
   const week = ['일', '월', '화', '수', '목', '금', '토']
   const [msg, setMsg] = useState('')
 
-  useEffect(() => {
-    const getHello = async () => {
-      const res = await fetch('/hello')
-      const data = await res.json()
-      console.log(data.message)
-      setMsg(data.message)
-    }
-
-    getHello()
-  }, [])
-
   const onClickCapture = async () => {
-    const res = await fetch('/hello')
-    const data = await res.json()
-    console.log(data.message)
-    setMsg(data.message)
+    await fetch(`http://localhost:8080/users/create?id=${'testid'}&pw=${'testpw'}&name=${'testname'}&school=${'testschool'}`, {
+      method: "GET",
+    }).then(async (resp) => { console.log(await resp.json()) })
   }
 
   return (
@@ -35,27 +23,27 @@ const HomePage = (): JSX.Element => {
           <div className={style.week}>오늘은 {new Date().getMonth()}월 {new Date().getDate()}일 {week[new Date().getDay()]}요일입니다.</div>
         </div>
 
-        <div className={style.card}>
-          <img className={style.cardimg} src="ni.jpg" alt=""/>
-          <div className={style.cardtitle}>니코 니코 니~!</div>
-        </div>
-        <div className={style.card}>
-          <img className={style.cardimg} src="ni.jpg" alt=""/>
-          <div className={style.cardtitle}>니코 니코 니~!</div>
-        </div>
-        <div className={style.card}>
-          <img className={style.cardimg} src="ni.jpg" alt=""/>
-          <div className={style.cardtitle}>니코 니코 니~!</div>
-        </div>
+        {/*<div className={style.card}>*/}
+        {/*  <img className={style.cardimg} src="ni.jpg" alt=""/>*/}
+        {/*  <div className={style.cardtitle}>니코 니코 니~!</div>*/}
+        {/*</div>*/}
+        {/*<div className={style.card}>*/}
+        {/*  <img className={style.cardimg} src="ni.jpg" alt=""/>*/}
+        {/*  <div className={style.cardtitle}>니코 니코 니~!</div>*/}
+        {/*</div>*/}
+        {/*<div className={style.card}>*/}
+        {/*  <img className={style.cardimg} src="ni.jpg" alt=""/>*/}
+        {/*  <div className={style.cardtitle}>니코 니코 니~!</div>*/}
+        {/*</div>*/}
 
-        <div className={style.card}>
-          <img className={style.cardimg} src="ni.jpg" alt=""/>
-          <div className={style.cardtitle}>니코 니코 니~!</div>
-        </div>
-        <div className={style.card}>
-          <img className={style.cardimg} src="ni.jpg" alt=""/>
-          <div className={style.cardtitle}>니코 니코 니~!</div>
-        </div>
+        {/*<div className={style.card}>*/}
+        {/*  <img className={style.cardimg} src="ni.jpg" alt=""/>*/}
+        {/*  <div className={style.cardtitle}>니코 니코 니~!</div>*/}
+        {/*</div>*/}
+        {/*<div className={style.card}>*/}
+        {/*  <img className={style.cardimg} src="ni.jpg" alt=""/>*/}
+        {/*  <div className={style.cardtitle}>니코 니코 니~!</div>*/}
+        {/*</div>*/}
         <div className={style.cardendl}>
           <div className={style.cardimg}></div>
         </div>
