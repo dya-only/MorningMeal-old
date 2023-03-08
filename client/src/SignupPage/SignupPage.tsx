@@ -4,34 +4,35 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
 import style from './SignupPage.module.css'
+import logo from '../assets/logo-white.png'
 
-const LoginPage = (): JSX.Element => {
-    const [id, setId] = useState('')
-    const [pw, setPw] = useState('')
+const SignupPage = (): JSX.Element => {
+  const getGBSW = async () => {
+    await fetch('http://localhost:8080/users/auth', {
+      method: "GET",
+    }).then(async (resp) => { console.log(await resp.json()) })
+  }
 
-    const onChangeId = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setId(e.target.value)
-    }
-    const onChangePw = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setPw(e.target.value)
-    }
+  const [id, setId] = useState('')
+  const [pw, setPw] = useState('')
 
-    const getNext = () => {
-      sessionStorage.setItem('create_id', id)
-      sessionStorage.setItem('create_pw', pw)
-      window.location.href = '/signup/set'
-    }
+  const onChangeId = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setId(e.target.value)
+  }
+  const onChangePw = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPw(e.target.value)
+  }
 
   return (
     <div className={style.outer}>
       <input type="text" className={style.entry} onChange={onChangeId} placeholder='아이디를 입력해주세요' />
       <input type="password" className={style.entry} onChange={onChangePw} placeholder='비밀번호를 입력해주세요' />
-      <button className={style.btn} onClick={getNext}>
-        <div className={style.text}>계속하기</div>
-        <FontAwesomeIcon className={style.icon} icon={faArrowRight} />
+      <button className={style.btn} onClick={getGBSW}>
+        <img className={style.logo} src={logo} alt=""/>
+        <div className={style.text}>새로운 시작!</div>
       </button>
     </div>
   )
 }
 
-export default LoginPage
+export default SignupPage

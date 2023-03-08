@@ -13,11 +13,10 @@ const FirstPage = (): JSX.Element => {
         <div className={style.title}><span className={style.colored}>아침급식</span><br/>프로젝트</div>
       </div>
       <div className={style.acts}>
-        <Link className={style.btn} to={'/signup'}>
+        <Link className={style.btn} to={'/login'}>
           <div className={style.text}>시작하기</div>
           <FontAwesomeIcon className={style.icon} icon={faArrowRight} />
         </Link>
-        <div className={style.undertext}><Link className={style.tologin} to={'/login'}>이미 가입된 계정</Link>이 있나요?</div>
       </div>
     </div>
   )

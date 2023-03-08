@@ -23,27 +23,27 @@ const HomePage = (): JSX.Element => {
           <div className={style.week}>오늘은 {new Date().getMonth()}월 {new Date().getDate()}일 {week[new Date().getDay()]}요일입니다.</div>
         </div>
 
-        {/*<div className={style.card}>*/}
-        {/*  <img className={style.cardimg} src="ni.jpg" alt=""/>*/}
-        {/*  <div className={style.cardtitle}>니코 니코 니~!</div>*/}
-        {/*</div>*/}
-        {/*<div className={style.card}>*/}
-        {/*  <img className={style.cardimg} src="ni.jpg" alt=""/>*/}
-        {/*  <div className={style.cardtitle}>니코 니코 니~!</div>*/}
-        {/*</div>*/}
-        {/*<div className={style.card}>*/}
-        {/*  <img className={style.cardimg} src="ni.jpg" alt=""/>*/}
-        {/*  <div className={style.cardtitle}>니코 니코 니~!</div>*/}
-        {/*</div>*/}
+        <div className={style.card}>
+          <img className={style.cardimg} src="ni.jpg" alt=""/>
+          <div className={style.cardtitle}>니코 니코 니~!</div>
+        </div>
+        <div className={style.card}>
+          <img className={style.cardimg} src="ni.jpg" alt=""/>
+          <div className={style.cardtitle}>니코 니코 니~!</div>
+        </div>
+        <div className={style.card}>
+          <img className={style.cardimg} src="ni.jpg" alt=""/>
+          <div className={style.cardtitle}>니코 니코 니~!</div>
+        </div>
 
-        {/*<div className={style.card}>*/}
-        {/*  <img className={style.cardimg} src="ni.jpg" alt=""/>*/}
-        {/*  <div className={style.cardtitle}>니코 니코 니~!</div>*/}
-        {/*</div>*/}
-        {/*<div className={style.card}>*/}
-        {/*  <img className={style.cardimg} src="ni.jpg" alt=""/>*/}
-        {/*  <div className={style.cardtitle}>니코 니코 니~!</div>*/}
-        {/*</div>*/}
+        <div className={style.card}>
+          <img className={style.cardimg} src="ni.jpg" alt=""/>
+          <div className={style.cardtitle}>니코 니코 니~!</div>
+        </div>
+        <div className={style.card}>
+          <img className={style.cardimg} src="ni.jpg" alt=""/>
+          <div className={style.cardtitle}>니코 니코 니~!</div>
+        </div>
         <div className={style.cardendl}>
           <div className={style.cardimg}></div>
         </div>

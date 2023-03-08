@@ -6,9 +6,11 @@
   align-items: center;
   background-color: white;
 
-  animation: fade 0.5s ease-in-out 0 1 forwards;
-
   font-family: 'Noto Sans KR', sans-serif;
+
+  animation: fade;
+  animation-duration: 0.5s;
+  animation-delay: 0s;
 }
 
 @keyframes fade {
@@ -77,4 +79,9 @@
   width: 16px;
   height: 16px;
   margin-left: 8px;
+}
+
+.logo {
+  width: 25px;
+  height: 25px;
 }
