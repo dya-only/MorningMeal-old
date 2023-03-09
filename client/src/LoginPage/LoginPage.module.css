@@ -89,9 +89,13 @@
 .tologin {
   text-decoration: underline;
   color: #0764ff;
-  margin-left: -160px;
+  /*margin-left: -160px;*/
 }
 .undertext {
-  margin-left: 10px;
+  /*margin-left: -20px;*/
   color: #3679ef;
+}
+
+.btn_contain {
+  text-align: left;
 }
