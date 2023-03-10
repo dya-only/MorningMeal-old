@@ -9,8 +9,9 @@ router.route('/').get(async (req, res) => {
   const params = req.query as any
 
   // CREATE DB TABLE
-  run('CREATE TABLE user(id integer primary key autoincrement, name text, email text unique, wish_id text, watched_id text)')
+  // run('CREATE TABLE user(id integer primary key autoincrement, name text, email text unique, wish_id text, watched_id text)')
 
+  log(`id: ${params.id}\npw: ${params.pw}\nname: ${params.name}\ntag: ${params.tag}`)
   res.json({ id: params.id, pw: params.pw, message: 'create successful' })
 })
 
