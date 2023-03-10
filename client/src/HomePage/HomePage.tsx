@@ -19,7 +19,7 @@ const HomePage = (): JSX.Element => {
     <div className={style.outer}>
       <div className={style.inner}>
         <div className={style.front}>
-          <div className={style.day}>{ msg }</div>
+          <div className={style.day}>즐거운 아침이에요!</div>
           <div className={style.week}>오늘은 {new Date().getMonth()}월 {new Date().getDate()}일 {week[new Date().getDay()]}요일입니다.</div>
         </div>
 
@@ -50,10 +50,6 @@ const HomePage = (): JSX.Element => {
     </div>
 
     <div className={style.btncontain}>
-      {/*<Link className={style.btn} to={'/'}>*/}
-      {/*  <FontAwesomeIcon className={style.icon} icon={faCamera} />*/}
-      {/*  <div className={style.text}>가져오기</div>*/}
-      {/*</Link>*/}
       <button className={style.btn} onClick={onClickCapture}>
         <FontAwesomeIcon className={style.icon} icon={faCamera} />
         <div className={style.text}>가져오기</div>

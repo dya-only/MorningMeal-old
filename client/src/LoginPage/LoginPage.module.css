@@ -5,12 +5,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: white;
 
   font-family: 'Noto Sans KR', sans-serif;
 
   animation: fade;
-  animation-duration: 0.3s;
+  animation-duration: 0.5s;
   animation-delay: 0s;
 }
 
@@ -53,7 +52,7 @@
   border-radius: 12px;
   font-weight: 700;
   font-size: 18px;
-  width: 85vw;
+  width: 87vw;
   height: 50px;
   text-decoration: none;
 
@@ -87,14 +86,25 @@
   height: 25px;
 }
 
+.bg {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  object-fit: cover;
+  z-index: -10;
+
+  filter:blur(5px) brightness(80%);
+}
+
 .tologin {
   text-decoration: underline;
-  color: #0764ff;
+  color: #ffffff;
+  font-weight: 700;
   /*margin-left: -160px;*/
 }
 .undertext {
   /*margin-left: -20px;*/
-  color: #3679ef;
+  color: #ffffff;
 }
 
 .btn_contain {
@@ -117,9 +127,9 @@
   border: 0;
 }
 .home {
-  color: #4385F6;
+  color: #ffffff;
 }
 .hometext {
   margin-left: 4px;
-  color: #4385F6;
+  color: #ffffff;
 }

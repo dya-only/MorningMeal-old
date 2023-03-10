@@ -8,7 +8,7 @@ import style from './FirstPage.module.css'
 const FirstPage = (): JSX.Element => {
   return (
     <div className={style.outer}>
-      {/* <div className={style.bg}></div> */}
+       <img className={style.bg} src='pj_bg.png' alt={''} />
       <div className={style.inner}>
         <div className={style.title}><span className={style.colored}>아침급식</span><br/>프로젝트</div>
       </div>

@@ -1,21 +1,25 @@
 .outer {
-  height: 98vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-
   font-family: 'Noto Sans KR', sans-serif;
 }
 .inner {
-  height: 85%;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .acts {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
   text-align: left;
+  padding-bottom: 16px;
 }
 .undertext {
   margin-left: 10px;
@@ -27,13 +31,13 @@
 }
 
 .bg {
-  width: 300vw;
+  width: 100vw;
   height: 100vh;
   position: fixed;
-  background: #4385F6;
-  transform: translateY(450px);
-  rotate: 10deg;
+  object-fit: cover;
   z-index: -10;
+
+  filter:blur(5px);
 }
 
 .colored {
