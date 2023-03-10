@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { faHome } from '@fortawesome/free-solid-svg-icons'
 
 import style from './LoginPage.module.css'
 import logo from '../assets/logo-white.png'
@@ -32,12 +32,14 @@ const LoginPage = (): JSX.Element => {
 
   return (
     <div className={style.outer}>
-      {/*<button className={style.btn} onClick={getGBSW}>*/}
-      {/*  <img className={style.logo} src={logo} alt=""/>*/}
-      {/*  <div className={style.text}>경소고로 로그인</div>*/}
-      {/*</button>*/}
-      <input type="text" className={style.entry} onChange={onChangeId} placeholder='아이디를 입력해주세요' />
-      <input type="password" className={style.entry} onChange={onChangePw} placeholder='비밀번호를 입력해주세요' />
+      <div className={style.header_contain}>
+        <button className={style.homebtn} onClick={() => window.location.href='/'}>
+          <FontAwesomeIcon className={style.home} icon={faHome} />
+          <span className={style.hometext}>처음으로</span>
+        </button>
+        <input type="text" className={style.entry} onChange={onChangeId} placeholder='아이디를 입력해주세요' />
+        <input type="password" className={style.entry} onChange={onChangePw} placeholder='비밀번호를 입력해주세요' />
+      </div>
       <div className={style.btn_contain}>
         <button className={style.btn} onClick={getLogin}>
           <img className={style.logo} src={logo} alt=""/>

@@ -8,6 +8,10 @@ html, body {
   padding: 0;
 }
 
+button {
+  cursor: pointer;
+}
+
 a {
   text-decoration: none;
 }

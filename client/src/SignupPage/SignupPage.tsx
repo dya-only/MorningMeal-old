@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
 import Dropdown from 'react-dropdown'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import {faArrowRight, faHome} from '@fortawesome/free-solid-svg-icons'
 
 import style from './SignupPage.module.css'
 import logo from '../assets/logo-white.png'
@@ -34,10 +34,16 @@ const SignupPage = (): JSX.Element => {
 
   return (
     <div className={style.outer}>
-      <input type="text" className={style.entry} onChange={onChangeId} placeholder='아이디를 입력해주세요' />
-      <input type="password" id={style.mb} className={style.entry} onChange={onChangePw} placeholder='비밀번호를 입력해주세요' />
-      <input type="text" className={style.entry} onChange={onChangeId} placeholder='이름을 입력해주세요' />
-      {/*<Dropdown options={options} onChange{} value={options[0]} placeholder='선택해주세요' />*/}
+      <div className={style.header_contain}>
+        <button className={style.homebtn} onClick={() => window.location.href='/'}>
+            <FontAwesomeIcon className={style.home} icon={faHome} />
+            <span className={style.hometext}>처음으로</span>
+        </button>
+          <input type="text" className={style.entry} onChange={onChangeId} placeholder='아이디를 입력해주세요' />
+          <input type="password" id={style.mb} className={style.entry} onChange={onChangePw} placeholder='비밀번호를 입력해주세요' />
+          <input type="text" className={style.entry} onChange={onChangeId} placeholder='이름을 입력해주세요' />
+          {/*<Dropdown options={options} onChange{} value={options[0]} placeholder='선택해주세요' />*/}
+      </div>
       <button className={style.btn} onClick={getSignup}>
         <img className={style.logo} src={logo} alt=""/>
         <div className={style.text}>새로운 시작!</div>
