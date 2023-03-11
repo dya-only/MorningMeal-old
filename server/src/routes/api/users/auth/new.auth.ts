@@ -9,10 +9,10 @@ router.route('/').get(async (req, res) => {
   const params = req.query as any
 
   // CREATE DB TABLE
-  // run('CREATE TABLE user(id integer primary key autoincrement, name text, email text unique, wish_id text, watched_id text)')
+  run('CREATE TABLE user(idx integer primary key autoincrement, id text unique, pw text, name text, tag text)')
 
-  log(`id: ${params.id}\npw: ${params.pw}\nname: ${params.name}\ntag: ${params.tag}`)
-  res.json({ id: params.id, pw: params.pw, message: 'create successful' })
+  // log(`id: ${params.id}\npw: ${params.pw}\nname: ${params.name}\ntag: ${params.tag}`)
+  res.json({ id: params.id, pw: params.pw, name: params.name, tag: params.tag, message: 'create successful' })
 })
 
 export default router
