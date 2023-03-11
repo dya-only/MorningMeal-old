@@ -98,13 +98,13 @@
 
 .tologin {
   text-decoration: underline;
-  color: #ffffff;
+  color: #4385F6;
   font-weight: 700;
   /*margin-left: -160px;*/
 }
 .undertext {
   /*margin-left: -20px;*/
-  color: #ffffff;
+  color: #4385F6;
 }
 
 .btn_contain {
@@ -127,9 +127,9 @@
   border: 0;
 }
 .home {
-  color: #ffffff;
+  color: #4385F6;
 }
 .hometext {
   margin-left: 4px;
-  color: #ffffff;
+  color: #4385F6;
 }

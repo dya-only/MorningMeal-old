@@ -9,11 +9,6 @@ import logo from '../assets/logo-white.png'
 const log = console.log
 
 const LoginPage = (): JSX.Element => {
-  // const getGBSW = async () => {
-  //   await fetch('http://localhost:8080/users/auth', {
-  //     method: "GET",
-  //   }).then(async (resp) => { console.log(await resp.json()) })
-  // }
   const getLogin = async () => {
     await fetch(`http://localhost:8080/api/users/auth?id=${ id }&pw=${ pw }`, {
       method: "GET",
@@ -32,7 +27,6 @@ const LoginPage = (): JSX.Element => {
 
   return (
     <div className={style.outer}>
-      <img className={style.bg} src='pj_bg.png' alt={''} />
       <div className={style.header_contain}>
         <button className={style.homebtn} onClick={() => window.location.href='/'}>
           <FontAwesomeIcon className={style.home} icon={faHome} />

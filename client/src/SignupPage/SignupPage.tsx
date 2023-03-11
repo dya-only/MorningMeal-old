@@ -62,7 +62,6 @@ const SignupPage = (): JSX.Element => {
 
   return (
     <div className={style.outer}>
-      <img className={style.bg} src='pj_bg.png' alt={''} />
       <div className={style.header_contain}>
         <button className={style.homebtn} onClick={() => window.location.href='/'}>
             <FontAwesomeIcon className={style.home} icon={faHome} />
