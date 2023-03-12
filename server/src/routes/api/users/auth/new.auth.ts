@@ -14,15 +14,28 @@ router.route('/').get(async (req, res) => {
   // CREATE DB TABLE
   db.run('CREATE TABLE IF NOT EXISTS users(idx integer primary key autoincrement, id text unique, pw text, name text, tag text)')
 
-  db.run(`INSERT INTO users(id, pw, name, tag) VALUES(\'${params.id}\', \'${params.pw}\', \'${params.name}\', \'${params.tag}\')`, (err) => {
-    if (err) return console.log(err.message)
+  let sql = `SELECT * FROM users WHERE id = \'${params.id}\'`;
 
-    console.log(`create account [${params.name}] successful`)
+  db.all(sql, [], (err, rows) => {
+    if (err) throw err
+
+    let exists = false
+    for (let i = 0; i < rows.length; i++) {
+      if (rows[i].id === params.id) exists = true
+    }
+
+    if (!exists) {
+      db.run(`INSERT INTO users(id, pw, name, tag) VALUES(\'${params.id}\', \'${params.pw}\', \'${params.name}\', \'${params.tag}\')`, (err) => {
+        if (err) return log(err.message)
+    
+        log(`create account [${params.name}] successful`)
+        res.json({ id: params.id, pw: params.pw, name: params.name, tag: params.tag, message: 'create successful' })
+      })
+    } else { 
+      log(`[${params.name}] is exists`)
+      res.json({ id: params.id, pw: params.pw, name: params.name, tag: params.tag, message: 'already exists' })
+    }
   })
-
-  res.json({ id: params.id, pw: params.pw, name: params.name, tag: params.tag, message: 'create successful' })
-
-  db.close()
 })
 
 export default router
