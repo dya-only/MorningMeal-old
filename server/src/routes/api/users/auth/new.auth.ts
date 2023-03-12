@@ -12,7 +12,7 @@ router.route('/').get(async (req, res) => {
   const params = req.query as any
 
   // CREATE DB TABLE
-  db.run('CREATE TABLE IF NOT EXISTS users(idx integer primary key autoincrement, id text unique, pw text, name text, tag text)')
+  db.run('CREATE IF NOT EXISTS TABLE users(idx integer primary key autoincrement, id text unique, pw text, name text, tag text)')
 
   // log(`id: ${params.id}\npw: ${params.pw}\nname: ${params.name}\ntag: ${params.tag}`)
   res.json({ id: params.id, pw: params.pw, name: params.name, tag: params.tag, message: 'create successful' })
