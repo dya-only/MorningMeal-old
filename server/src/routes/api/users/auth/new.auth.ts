@@ -29,11 +29,11 @@ router.route('/').get(async (req, res) => {
         if (err) return log(err.message)
     
         log(`create account [${params.name}] successful`)
-        res.json({ id: params.id, pw: params.pw, name: params.name, tag: params.tag, message: 'create successful' })
+        res.json({ id: params.id, pw: params.pw, name: params.name, tag: params.tag, message: 'success' })
       })
     } else { 
-      log(`[${params.name}] is exists`)
-      res.json({ id: params.id, pw: params.pw, name: params.name, tag: params.tag, message: 'already exists' })
+      log(`[${params.id}] is exists`)
+      res.json({ id: params.id, pw: params.pw, name: params.name, tag: params.tag, message: 'exists' })
     }
   })
 })

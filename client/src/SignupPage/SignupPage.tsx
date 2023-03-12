@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
 import Dropdown from 'react-dropdown'
 import Select from 'react-select'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome } from '@fortawesome/free-solid-svg-icons'
 
@@ -15,6 +15,9 @@ const SignupPage = (): JSX.Element => {
   const [pw, setPw] = useState('')
   const [name, setName] = useState('')
   const [tag, setTag] = useState('')
+
+  const [existStatus, setExistStatus] = useState('none')
+  const [existVisible, setExistVisible] = useState('hidden')
 
   const [btnCssL, setBtnCssL] = useState('white')
   const [btnCssR, setBtnCssR] = useState('white')
@@ -43,11 +46,52 @@ const SignupPage = (): JSX.Element => {
     outline: 0;
   `
 
+  const fade = keyframes`
+    0% {
+      opacity: 0;
+      transform: translateY(0px)'
+    }
+    20% {
+      opacity: 1;
+      transform: translateY(50px);
+    }
+    80% {
+      opacity: 1;
+      transform: translateY(50px);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(0px);
+    }
+  `
+  const StyledExist = styled.div`
+    background-color: white;
+    padding: 12px;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+    border-radius: 12px;
+
+    visibility: ${existVisible};
+    animation-name: ${fade};
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+  `
+
   const getSignup = async () => {
     await fetch(`http://localhost:8080/api/users/new?id=${ id }&pw=${ pw }&name=${ name }&tag=${ tag }`, {
       method: "GET",
-    }).then(async (resp) => { console.log(await resp.json()) })
+    }).then(async (resp) => {
+      const data = await resp.json()
 
+      if (data.message == 'exists') {
+        setExistStatus('fade')
+        setExistVisible('visible')
+
+        setTimeout(() => {
+          setExistStatus('none')
+          setExistVisible('hidden')
+        }, 3000)
+      }
+    })
   }
 
   const onChangeId = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -62,6 +106,10 @@ const SignupPage = (): JSX.Element => {
 
   return (
     <div className={style.outer}>
+      <div className={style.ex}>
+        <StyledExist>이미 아이디가 존재합니다.</StyledExist>
+      </div>
+
       <div className={style.header_contain}>
         <button className={style.homebtn} onClick={() => window.location.href='/'}>
             <FontAwesomeIcon className={style.home} icon={faHome} />
