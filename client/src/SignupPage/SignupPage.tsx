@@ -4,7 +4,7 @@ import Dropdown from 'react-dropdown'
 import Select from 'react-select'
 import styled, { keyframes } from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHome } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faCircleXmark } from '@fortawesome/free-solid-svg-icons'
 
 import style from './SignupPage.module.css'
 import logo from '../assets/logo-white.png'
@@ -18,6 +18,8 @@ const SignupPage = (): JSX.Element => {
 
   const [existStatus, setExistStatus] = useState('none')
   const [existVisible, setExistVisible] = useState('hidden')
+  const [typeStatus, setTypeStatus] = useState('none')
+  const [typeVisible, setTypeVisible] = useState('hidden')
 
   const [btnCssL, setBtnCssL] = useState('white')
   const [btnCssR, setBtnCssR] = useState('white')
@@ -49,7 +51,7 @@ const SignupPage = (): JSX.Element => {
   const fade = keyframes`
     0% {
       opacity: 0;
-      transform: translateY(0px)'
+      transform: translateY(0px);
     }
     20% {
       opacity: 1;
@@ -69,8 +71,25 @@ const SignupPage = (): JSX.Element => {
     padding: 12px;
     box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
     border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     visibility: ${existVisible};
+    animation-name: ${fade};
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+  `
+  const StyledTyping = styled.div`
+    background-color: white;
+    padding: 12px;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    visibility: ${typeVisible};
     animation-name: ${fade};
     animation-duration: 2s;
     animation-fill-mode: forwards;
@@ -82,14 +101,24 @@ const SignupPage = (): JSX.Element => {
     }).then(async (resp) => {
       const data = await resp.json()
 
-      if (data.message == 'exists') {
+      if (data.status == 'exists') {
         setExistStatus('fade')
         setExistVisible('visible')
 
         setTimeout(() => {
           setExistStatus('none')
           setExistVisible('hidden')
-        }, 3000)
+        }, 2000)
+
+      } else if (data.status == 'typing_err') {
+        setTypeStatus('fade')
+        setTypeVisible('visible')
+
+        setTimeout(() => {
+          setTypeStatus('none')
+          setTypeVisible('hidden')
+        }, 2000)
+
       }
     })
   }
@@ -107,7 +136,10 @@ const SignupPage = (): JSX.Element => {
   return (
     <div className={style.outer}>
       <div className={style.ex}>
-        <StyledExist>이미 아이디가 존재합니다.</StyledExist>
+        <StyledExist><FontAwesomeIcon className={style.ex_x} icon={faCircleXmark} />이미 아이디가 존재합니다.</StyledExist>
+      </div>
+      <div className={style.ex}>
+        <StyledTyping><FontAwesomeIcon className={style.ex_x} icon={faCircleXmark} />모든 칸에 입력해주세요.</StyledTyping>
       </div>
 
       <div className={style.header_contain}>

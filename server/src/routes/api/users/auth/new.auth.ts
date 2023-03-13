@@ -27,13 +27,15 @@ router.route('/').get(async (req, res) => {
     if (!exists) {
       db.run(`INSERT INTO users(id, pw, name, tag) VALUES(\'${params.id}\', \'${params.pw}\', \'${params.name}\', \'${params.tag}\')`, (err) => {
         if (err) return log(err.message)
-    
         log(`create account [${params.name}] successful`)
-        res.json({ id: params.id, pw: params.pw, name: params.name, tag: params.tag, message: 'success' })
+        res.json({ status: 'success', message: `create account [${params.name}] successful` })
       })
-    } else { 
+    } else if (exists && params.id !== '' && params.pw !== '' && params.name !== '' && params.tag !== '') {
       log(`[${params.id}] is exists`)
-      res.json({ id: params.id, pw: params.pw, name: params.name, tag: params.tag, message: 'exists' })
+      res.json({ status: 'exists', message: `[${params.id}] is exists` })
+    } else {
+      log(`plz type all entry`)
+      res.json({status: 'typing_err', message: `plz type all entry`})
     }
   })
 })
