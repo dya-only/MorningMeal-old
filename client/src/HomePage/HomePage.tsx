@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCamera } from '@fortawesome/free-solid-svg-icons'
+import { faCamera, faSign, faSignOut } from '@fortawesome/free-solid-svg-icons'
 
 import style from './HomePage.module.css'
 const log = console.log
@@ -14,12 +14,23 @@ const HomePage = (): JSX.Element => {
     log('click the capture!')
   }
 
+  const getSignOut = () => {
+    localStorage.setItem('account', '')
+    localStorage.setItem('name', '')
+    window.location.href = '/'
+  }
+
   return (
     <div className={style.outer}>
       <div className={style.inner}>
         <div className={style.profile}>
-          <img className={style.profile_img} src="ni.jpg" alt="" />
-          <div className={style.profile_name}>{ sessionStorage.getItem('name') }</div>
+          <div className={style.profile_cont}>
+            <div className={style.profile_name}>{ localStorage.getItem('name') }</div>
+            <div className={style.profile_id}>{ localStorage.getItem('account') }</div>
+          </div>
+          <button className={style.setting} onClick={getSignOut}>
+            <FontAwesomeIcon className={style.out} icon={faSignOut} />
+          </button>
         </div>
         <div className={style.front}>
           <div className={style.day}>즐거운 아침이에요!</div>
@@ -56,6 +67,7 @@ const HomePage = (): JSX.Element => {
       <button className={style.btn} onClick={onClickCapture}>
         <FontAwesomeIcon className={style.icon} icon={faCamera} />
         <div className={style.text}>가져오기</div>
+        {/* <input type="file" accept="image/*" capture="camera" /> */}
       </button>
     </div>
   </div>

@@ -61,10 +61,11 @@ const LoginPage = (): JSX.Element => {
       method: "GET",
     }).then(async (resp) => {
       const data = await resp.json()
+      log(data)
 
       if (data.status == 'success') { 
-        sessionStorage.setItem('account', id)
-        sessionStorage.setItem('name', data.name)
+        localStorage.setItem('account', id)
+        localStorage.setItem('name', data.name)
         window.location.href = '/index'
       } else {
         setTypeStatus('fade')

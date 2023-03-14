@@ -6,6 +6,14 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import style from './FirstPage.module.css'
 
 const FirstPage = (): JSX.Element => {
+  const onClickStart = () => {
+    if (localStorage.getItem('account') !== '' && localStorage.getItem('account') !== null) {
+      window.location.href='/index'
+    } else {
+      window.location.href='/login'
+    }
+  }
+
   return (
     <Fragment>
 
@@ -15,10 +23,10 @@ const FirstPage = (): JSX.Element => {
           <div className={style.title}><span className={style.colored}>아침급식</span><br/>프로젝트</div>
         </div>
         <div className={style.acts}>
-          <Link className={style.btn} to={'/login'}>
+          <button className={style.btn} onClick={onClickStart}>
             <div className={style.text}>시작하기</div>
             <FontAwesomeIcon className={style.icon} icon={faArrowRight} />
-          </Link>
+          </button>
         </div>
       </div>
     </Fragment>
