@@ -118,6 +118,8 @@ const SignupPage = (): JSX.Element => {
           setTypeStatus('none')
           setTypeVisible('hidden')
         }, 2000)
+      } else {
+        window.location.href = '/login'
       }
     })
   }

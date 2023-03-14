@@ -23,7 +23,7 @@ router.route('/').get(async (req, res) => {
     }
 
     if (success) {
-      res.json({ status: 'success', message: `loged in account [${params.id}] successful` })
+      res.json({ status: 'success', message: `loged in account [${params.name}] successful`, id: params.id, name: params.name })
     } else {
       res.json({ status: 'failed', message: `failed login [${params.id}]` })
     }

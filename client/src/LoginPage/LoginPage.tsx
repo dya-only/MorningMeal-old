@@ -64,6 +64,7 @@ const LoginPage = (): JSX.Element => {
 
       if (data.status == 'success') { 
         sessionStorage.setItem('account', id)
+        sessionStorage.setItem('name', data.name)
         window.location.href = '/index'
       } else {
         setTypeStatus('fade')
@@ -77,7 +78,7 @@ const LoginPage = (): JSX.Element => {
 
     })
   }
-
+  
   return (
     <div className={style.outer}>
       <div className={style.ex}>

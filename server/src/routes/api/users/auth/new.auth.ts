@@ -30,8 +30,6 @@ router.route('/').get(async (req, res) => {
 
         log(`create account [${params.name}] successful`)
         res.json({ status: 'success', message: `create account [${params.name}] successful` })
-
-        window.location.href = '/login'
       })
     } else if (exists && params.id !== '' && params.pw !== '' && params.name !== '' && params.tag !== '') {
       log(`[${params.id}] is exists`)

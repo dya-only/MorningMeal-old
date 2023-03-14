@@ -114,3 +114,21 @@
     margin-right: 10px;
     width: 20px;
 }
+
+.profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile_img {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    object-fit: cover;
+    margin-right: 12px;
+}
+
+.profile_name {
+    font-size: 16px;
+}
