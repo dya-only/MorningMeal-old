@@ -195,3 +195,8 @@
     height: 100%;
     color: #4385F6;
 }
+
+.capture_file {
+    width: 1px;
+    height: 1px;
+}

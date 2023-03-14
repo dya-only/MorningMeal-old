@@ -9,6 +9,8 @@ const log = console.log
 const HomePage = (): JSX.Element => {
   const week = ['일', '월', '화', '수', '목', '금', '토']
   const [msg, setMsg] = useState('')
+  const [img, setImg] = useState('')
+  const [reImg, setReImg] = useState('')
 
   const onClickCapture = async () => {
     log('click the capture!')
@@ -18,6 +20,15 @@ const HomePage = (): JSX.Element => {
     localStorage.setItem('account', '')
     localStorage.setItem('name', '')
     window.location.href = '/'
+  }
+
+  const onChangeIMG = (e: React.ChangeEvent<HTMLInputElement>) => {    
+    const fReader = new FileReader()
+    fReader.readAsDataURL(e.target.files![0])
+    fReader.onload = (e: any) => {
+      log(e.target.result)
+      setReImg(e.target.result)
+    }
   }
 
   return (
@@ -38,7 +49,7 @@ const HomePage = (): JSX.Element => {
         </div>
 
         <div className={style.card}>
-          <img className={style.cardimg} src="ni.jpg" alt=""/>
+          <img className={style.cardimg} src={reImg || "ni.jpg"} alt=""/>
           <div className={style.cardtitle}>니코 니코 니~!</div>
         </div>
         <div className={style.card}>
@@ -64,11 +75,11 @@ const HomePage = (): JSX.Element => {
     </div>
 
     <div className={style.btncontain}>
-      <button className={style.btn} onClick={onClickCapture}>
+      <label htmlFor="capture_file" className={style.btn}>
         <FontAwesomeIcon className={style.icon} icon={faCamera} />
         <div className={style.text}>가져오기</div>
-        {/* <input type="file" accept="image/*" capture="camera" /> */}
-      </button>
+      </label>
+      <input className={style.capture_file} id="capture_file" onChange={onChangeIMG} type="file" accept="image/*" capture="user" />
     </div>
   </div>
   )

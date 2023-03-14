@@ -76,7 +76,6 @@ const LoginPage = (): JSX.Element => {
           setTypeVisible('hidden')
         }, 2000)
       }
-
     })
   }
   

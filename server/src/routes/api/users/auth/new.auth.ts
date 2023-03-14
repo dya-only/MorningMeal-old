@@ -12,7 +12,7 @@ router.route('/').get(async (req, res) => {
   const params = req.query as any
 
   // CREATE DB TABLE
-  db.run('CREATE TABLE IF NOT EXISTS users(idx integer primary key autoincrement, id text unique, pw text, name text, tag text)')
+  db.run('CREATE TABLE IF NOT EXISTS users(idx integer primary key autoincrement, id text unique, pw text, name text, tag text, imgs text)')
 
   let sql = `SELECT * FROM users WHERE id = \'${params.id}\'`;
 
