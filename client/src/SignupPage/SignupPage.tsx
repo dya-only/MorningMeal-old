@@ -118,7 +118,6 @@ const SignupPage = (): JSX.Element => {
           setTypeStatus('none')
           setTypeVisible('hidden')
         }, 2000)
-
       }
     })
   }

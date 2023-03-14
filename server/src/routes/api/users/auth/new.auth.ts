@@ -27,8 +27,11 @@ router.route('/').get(async (req, res) => {
     if (!exists) {
       db.run(`INSERT INTO users(id, pw, name, tag) VALUES(\'${params.id}\', \'${params.pw}\', \'${params.name}\', \'${params.tag}\')`, (err) => {
         if (err) return log(err.message)
+
         log(`create account [${params.name}] successful`)
         res.json({ status: 'success', message: `create account [${params.name}] successful` })
+
+        window.location.href = '/login'
       })
     } else if (exists && params.id !== '' && params.pw !== '' && params.name !== '' && params.tag !== '') {
       log(`[${params.id}] is exists`)

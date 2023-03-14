@@ -109,12 +109,16 @@
 
 .btn_contain {
   text-align: left;
+
+  z-index: 20;
 }
 
 .header_contain {
   display: flex;
   flex-direction: column;
   text-align: left;
+
+  z-index: 20;
 }
 
 .homebtn {
@@ -132,4 +136,24 @@
 .hometext {
   margin-left: 4px;
   color: #4385F6;
+}
+
+.ex {
+  /* padding-top: 40px; */
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  z-index: 10;
+  transition: all .5s;
+}
+
+.ex_x {
+  width: 20px;
+  height: 20px;
+  margin-right: 6px;
+  color: #ff3131;
 }
