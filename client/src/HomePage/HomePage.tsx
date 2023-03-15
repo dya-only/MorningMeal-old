@@ -12,22 +12,30 @@ const HomePage = (): JSX.Element => {
   const [img, setImg] = useState('')
   const [reImg, setReImg] = useState('')
 
-  const onClickCapture = async () => {
-    log('click the capture!')
-  }
-
   const getSignOut = () => {
     localStorage.setItem('account', '')
     localStorage.setItem('name', '')
     window.location.href = '/'
   }
 
-  const onChangeIMG = (e: React.ChangeEvent<HTMLInputElement>) => {    
-    const fReader = new FileReader()
-    fReader.readAsDataURL(e.target.files![0])
-    fReader.onload = (e: any) => {
-      log(e.target.result)
-      setReImg(e.target.result)
+  const onChangeIMG = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // const formData = new FormData()
+    // formData.append('img', e.target.files![0])
+
+    const file = e.target.files![0]
+    const reader: any = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onloadend = () => {
+      setImg(reader.result)
+      log(reader.result)
+      fetch(`http://localhost:8080/api/users/data`, {
+        method: "POST",
+        headers: {'Access-Control-Allow-Origin': '*'},
+        body: JSON.stringify({ value: 'hello world', id: localStorage.getItem('account') })
+      }).then(async (resp) => {
+        const data = await resp.json()
+        log(data)
+      })
     }
   }
 
