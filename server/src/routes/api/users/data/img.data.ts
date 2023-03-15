@@ -8,7 +8,7 @@ const log = console.log
 router.route('/').post(async (req, res) => {
   const body = req.body
 
-  log(body)
+  log(req.body)
 //   let sql = `SELECT * FROM users WHERE id = \'${params.id}\'`;
 
 //   db.all(sql, [], (err, rows) => {

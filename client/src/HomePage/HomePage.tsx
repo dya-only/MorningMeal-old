@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react'
+import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCamera, faSign, faSignOut } from '@fortawesome/free-solid-svg-icons'
@@ -25,16 +26,14 @@ const HomePage = (): JSX.Element => {
     const file = e.target.files![0]
     const reader: any = new FileReader()
     reader.readAsDataURL(file)
-    reader.onloadend = () => {
+    reader.onloadend = async () => {
       setImg(reader.result)
       log(reader.result)
-      fetch(`http://localhost:8080/api/users/data`, {
-        method: "POST",
-        headers: {'Access-Control-Allow-Origin': '*'},
-        body: JSON.stringify({ value: 'hello world', id: localStorage.getItem('account') })
-      }).then(async (resp) => {
-        const data = await resp.json()
-        log(data)
+      
+      await axios({
+        method: "post",
+        url: `http://localhost:8080/api/users/data`,
+        data: JSON.stringify({ img: reader.result })
       })
     }
   }
