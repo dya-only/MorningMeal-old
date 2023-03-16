@@ -1,32 +1,50 @@
 import express from "express"
 import {Database, OPEN_READWRITE} from 'sqlite3'
 
-const db = new Database('db/user.db')
+const db = new Database('db/images.db')
 const router = express.Router()
 const log = console.log
+
+function leftPad(value: number) {
+  if (value >= 10) {
+      return value;
+  }
+
+  return `0${value}`;
+}
+
+function getDate(source: Date, delimiter = '-') {
+  const year = source.getFullYear()
+  const month = leftPad(source.getMonth() + 1)
+  const day = leftPad(source.getDate())
+
+  return [year, month, day].join(delimiter)
+}
 
 router.route('/').post(async (req, res) => {
   const body = req.body
 
-  log(req.body)
-//   let sql = `SELECT * FROM users WHERE id = \'${params.id}\'`;
+  // CREATE DB TABLE
+  db.run('CREATE TABLE IF NOT EXISTS images(idx integer primary key autoincrement, img text, id text, date text)')
 
-//   db.all(sql, [], (err, rows) => {
-//     if (err) throw err
+  db.run(`INSERT INTO images(img, id, date) VALUES(\'${body.img}\', \'${body.id}\', \'${getDate(new Date())}\')`, (err) => {
+    if (err) return log(err.message)
 
-//     let images: string[] = rows[0].imgs
-//     images.push(params.img)
+    log(`add image [${body.id}] successful`)
+    res.json({ status: 'success', message: `add image [${body.id}] successful` })
+  })
+})
 
-//     log ('img', images)
-    
-//     db.run(`INSERT INTO users(id, pw, name, tag) VALUES(\'${params.id}\', \'${params.pw}\', \'${params.name}\', \'${params.tag}\')`, (err) => {
-//       if (err) return log(err.message)
+router.route('/').get(async (req, res) => {
+  const params = req.params as any
 
-//       log(`add image [${params.id}] successful`)
-      res.json({ status: 'success', img: body })
-//     })
+  let sql = `SELECT * FROM images`
 
-//   })
+  db.all(sql, [], (err, rows) => {
+    if (err) return log(err.message)
+
+    res.json({ data: rows })
+  })
 })
 
 export default router

@@ -13,6 +13,8 @@ const HomePage = (): JSX.Element => {
   const [img, setImg] = useState('')
   const [reImg, setReImg] = useState('')
 
+  const [imgArr, setImgArr] = useState([])
+
   const getSignOut = () => {
     localStorage.setItem('account', '')
     localStorage.setItem('name', '')
@@ -20,9 +22,6 @@ const HomePage = (): JSX.Element => {
   }
 
   const onChangeIMG = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // const formData = new FormData()
-    // formData.append('img', e.target.files![0])
-
     const file = e.target.files![0]
     const reader: any = new FileReader()
     reader.readAsDataURL(file)
@@ -33,10 +32,23 @@ const HomePage = (): JSX.Element => {
       await axios({
         method: "post",
         url: `http://localhost:8080/api/users/data`,
-        data: JSON.stringify({ img: reader.result })
+        data: { img: reader.result, id: localStorage.getItem('account') }
       })
     }
   }
+
+  useEffect(() => {
+    const getIMG = async () => {
+      axios({
+        method: "get",
+        url: `http://localhost:8080/api/users/data?id=${localStorage.getItem('account')}`
+      }).then(async (resp) => {
+        setImgArr(await resp.data.data)
+        log(await resp.data.data)
+      })
+    }
+    getIMG()
+  }, [])
 
   return (
     <div className={style.outer}>
@@ -55,27 +67,13 @@ const HomePage = (): JSX.Element => {
           <div className={style.week}>오늘은 {new Date().getMonth()}월 {new Date().getDate()}일 {week[new Date().getDay()]}요일입니다.</div>
         </div>
 
-        <div className={style.card}>
-          <img className={style.cardimg} src={reImg || "ni.jpg"} alt=""/>
-          <div className={style.cardtitle}>니코 니코 니~!</div>
-        </div>
-        <div className={style.card}>
-          <img className={style.cardimg} src="ni.jpg" alt=""/>
-          <div className={style.cardtitle}>니코 니코 니~!</div>
-        </div>
-        <div className={style.card}>
-          <img className={style.cardimg} src="ni.jpg" alt=""/>
-          <div className={style.cardtitle}>니코 니코 니~!</div>
-        </div>
-
-        <div className={style.card}>
-          <img className={style.cardimg} src="ni.jpg" alt=""/>
-          <div className={style.cardtitle}>니코 니코 니~!</div>
-        </div>
-        <div className={style.card}>
-          <img className={style.cardimg} src="ni.jpg" alt=""/>
-          <div className={style.cardtitle}>니코 니코 니~!</div>
-        </div>
+        { imgArr.map((el: any) => (
+          <div className={style.card}>
+            <img className={style.cardimg} src={el.img || "pj_bg.png"} alt=""/>
+            <div className={style.cardtitle}>{ el.date }의 아침!</div>
+          </div>
+        )) }
+        
         <div className={style.cardendl}>
           <div className={style.cardimg}></div>
         </div>
