@@ -36,9 +36,9 @@ router.route('/').post(async (req, res) => {
 })
 
 router.route('/').get(async (req, res) => {
-  const params = req.params as any
+  const params = req.query as any
 
-  let sql = `SELECT * FROM images`
+  let sql = `SELECT * FROM images WHERE id=\'${params.id}\'`
 
   db.all(sql, [], (err, rows) => {
     if (err) return log(err.message)

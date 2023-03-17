@@ -94,7 +94,7 @@
     margin-top: 16px;
     margin-bottom: 10px;
     width: 90%;
-    height: 200px;
+    height: 180px;
     border-radius: 12px;
     object-fit: cover;
 }
@@ -199,4 +199,22 @@
 .capture_file {
     width: 1px;
     height: 1px;
+}
+
+.unknown {
+    margin-top: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.unknown_text {
+    font-weight: 700;
+    font-size: 20px;
+    filter: opacity(10%);
+}
+.unknown_logo {
+    width: 100px;
+    height: 100px;
+    filter: invert() opacity(10%);
 }
