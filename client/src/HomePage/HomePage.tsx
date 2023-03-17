@@ -6,6 +6,7 @@ import { faCamera, faSign, faSignOut } from '@fortawesome/free-solid-svg-icons'
 
 import style from './HomePage.module.css'
 import logo from '../assets/logo-white.png'
+import logo_blue from '../assets/logo-blue.png'
 const log = console.log
 
 const HomePage = (): JSX.Element => {
@@ -16,6 +17,7 @@ const HomePage = (): JSX.Element => {
 
   const [imgArr, setImgArr] = useState([])
   const [imgExists, setImgExists] = useState(true)
+  const [isLoading, setIsLoading] = useState(true)
 
   const getSignOut = () => {
     localStorage.setItem('account', '')
@@ -37,6 +39,7 @@ const HomePage = (): JSX.Element => {
         data: { img: reader.result, id: localStorage.getItem('account') }
       })
     }
+    window.location.href = '/index'
   }
 
   useEffect(() => {
@@ -54,6 +57,8 @@ const HomePage = (): JSX.Element => {
       })
     }
     getIMG()
+
+    setTimeout(() => setIsLoading(false), 1500)
   }, [])
 
   return (
@@ -73,17 +78,23 @@ const HomePage = (): JSX.Element => {
           <div className={style.week}>오늘은 {new Date().getMonth()}월 {new Date().getDate()}일 {week[new Date().getDay()]}요일입니다.</div>
         </div>
 
-        { imgExists ? 
+        { isLoading ?
+          <div className={style.load_contain}>
+            <img className={style.load_logo} src={logo_blue} alt=""/>
+            <div className={style.load_title}>로딩중이에요!</div>
+          </div>
+        : ( imgExists ?
           ( imgArr.map((el: any) => (
             <div className={style.card}>
               <img className={style.cardimg} src={el.img || "pj_bg.png"} alt=""/>
               <div className={style.cardtitle}>{ el.date }의 아침!</div>
             </div>
           )) )
-        : <div className={style.unknown}>
-          <img className={style.unknown_logo} src={logo} alt="" />
-          <div className={style.unknown_text}>아직 가져온 급식이없어요!</div>
-        </div> }
+          : <div className={style.unknown}>
+            <img className={style.unknown_logo} src={logo} alt="" />
+            <div className={style.unknown_text}>아직 가져온 급식이없어요!</div>
+          </div> )
+        }
         
         <div className={style.cardendl}>
           <div className={style.cardimg}></div>

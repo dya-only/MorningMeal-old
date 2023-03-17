@@ -207,7 +207,6 @@
     flex-direction: column;
     align-items: center;
 }
-
 .unknown_text {
     font-weight: 700;
     font-size: 20px;
@@ -217,4 +216,40 @@
     width: 100px;
     height: 100px;
     filter: invert() opacity(10%);
+    margin-bottom: 10px;
+}
+
+.load_contain {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    animation-name: lateY;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+}
+
+.load_logo {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.load_title {
+    font-size: 20px;
+    font-weight: 500;
+    color: #4385F6;
+}
+
+@keyframes lateY {
+    0% {
+        transform: translateY(20px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(20px);
+    }
 }
