@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCamera, faSign, faSignOut } from '@fortawesome/free-solid-svg-icons'
+import { faCamera, faUserGroup, faSignOut } from '@fortawesome/free-solid-svg-icons'
 
 import style from './HomePage.module.css'
 import logo from '../assets/logo-white.png'
@@ -23,6 +23,10 @@ const HomePage = (): JSX.Element => {
     localStorage.setItem('account', '')
     localStorage.setItem('name', '')
     window.location.href = '/'
+  }
+
+  const getSetting = () => {
+    window.location.href = '/setting'
   }
 
   const onChangeIMG = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -65,11 +69,14 @@ const HomePage = (): JSX.Element => {
     <div className={style.outer}>
       <div className={style.inner}>
         <div className={style.profile}>
+          <button className={style.setting} onClick={getSetting}>
+            <FontAwesomeIcon className={style.set} icon={faUserGroup} />
+          </button>
           <div className={style.profile_cont}>
             <div className={style.profile_name}>{ localStorage.getItem('name') }</div>
             <div className={style.profile_id}>{ localStorage.getItem('account') }</div>
           </div>
-          <button className={style.setting} onClick={getSignOut}>
+          <button className={style.signout} onClick={getSignOut}>
             <FontAwesomeIcon className={style.out} icon={faSignOut} />
           </button>
         </div>

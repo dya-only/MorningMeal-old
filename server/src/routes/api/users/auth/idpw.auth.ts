@@ -11,7 +11,7 @@ const log = console.log
 
 router.route('/').get(async (req, res) => {
   const params = req.query as any
-  let name = ''
+  let name = '', tag = ''
 
   let sql = `SELECT * FROM users WHERE id = \'${params.id}\'`;
 
@@ -23,11 +23,12 @@ router.route('/').get(async (req, res) => {
       if (rows[i].pw == params.pw) {
         success = true
         name = rows[i].name
+        tag = rows[i].tag
       }
     }
 
     if (success) {
-      res.json({ status: 'success', message: `loged in account [${params.name}] successful`, id: params.id, name: name })
+      res.json({ status: 'success', message: `loged in account [${params.name}] successful`, id: params.id, name: name, tag: tag })
     } else {
       res.json({ status: 'failed', message: `failed login [${params.id}]` })
     }

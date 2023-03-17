@@ -66,6 +66,7 @@ const LoginPage = (): JSX.Element => {
       if (data.status == 'success') { 
         localStorage.setItem('account', id)
         localStorage.setItem('name', data.name)
+        localStorage.setItem('tag', data.tag)
         window.location.href = '/index'
       } else {
         setTypeStatus('fade')

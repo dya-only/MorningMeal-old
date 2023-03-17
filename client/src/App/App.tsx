@@ -6,6 +6,7 @@ import FirstPage from '../FirstPage/FirstPage'
 import HomePage from '../HomePage/HomePage'
 import LoginPage from '../LoginPage/LoginPage'
 import SignupPage from '../SignupPage/SignupPage'
+import SettingPage from '../SettingPage/SettingPage'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path='/index' element={<HomePage />} />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/signup' element={<SignupPage />} />
+        <Route path='/setting' element={<SettingPage />} />
       </Routes>
     </BrowserRouter>
   )
