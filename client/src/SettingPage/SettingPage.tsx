@@ -18,6 +18,13 @@ const SettingPage = (): JSX.Element => {
     setSearch(e.target.value)
   }
 
+  useEffect(() => {
+    axios({
+      method: "get",
+      url: `/api/users/set?parent_id=${localStorage.getItem('account')}`
+    })
+  }, [])
+
   return (
     <div className={style.outer}>
       <div className={style.inner}>

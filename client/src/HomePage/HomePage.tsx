@@ -37,9 +37,9 @@ const HomePage = (): JSX.Element => {
       setImg(reader.result)
       log(reader.result)
       
-      await axios({
+      axios({
         method: "post",
-        url: `http://localhost:8080/api/users/data`,
+        url: `http://ec2-52-78-245-7.ap-northeast-2.compute.amazonaws.com:8080/api/users/data`,
         data: { img: reader.result, id: localStorage.getItem('account') }
       })
     }
@@ -47,10 +47,10 @@ const HomePage = (): JSX.Element => {
   }
 
   useEffect(() => {
-    const getIMG = async () => {
+    const getIMG = () => {
       axios({
         method: "get",
-        url: `http://localhost:8080/api/users/data?id=${localStorage.getItem('account')}`
+        url: `http://ec2-52-78-245-7.ap-northeast-2.compute.amazonaws.com:8080/api/users/data?id=${localStorage.getItem('account')}`
       }).then(async (resp) => {
         if (await resp.data.data.length == 0) {
           setImgExists(false)
@@ -69,9 +69,11 @@ const HomePage = (): JSX.Element => {
     <div className={style.outer}>
       <div className={style.inner}>
         <div className={style.profile}>
-          <button className={style.setting} onClick={getSetting}>
-            <FontAwesomeIcon className={style.set} icon={faUserGroup} />
-          </button>
+          { localStorage.getItem('tag') == 'parent' ?
+            <button className={style.setting} onClick={getSetting}>
+              <FontAwesomeIcon className={style.set} icon={faUserGroup} />
+            </button>
+          : null }
           <div className={style.profile_cont}>
             <div className={style.profile_name}>{ localStorage.getItem('name') }</div>
             <div className={style.profile_id}>{ localStorage.getItem('account') }</div>

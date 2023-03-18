@@ -96,7 +96,7 @@ const SignupPage = (): JSX.Element => {
   `
 
   const getSignup = async () => {
-    await fetch(`http://localhost:8080/api/users/new?id=${ id }&pw=${ pw }&name=${ name }&tag=${ tag }`, {
+    await fetch(`http://ec2-52-78-245-7.ap-northeast-2.compute.amazonaws.com:8080/api/users/new?id=${ id }&pw=${ pw }&name=${ name }&tag=${ tag }`, {
       method: "GET",
     }).then(async (resp) => {
       const data = await resp.json()
