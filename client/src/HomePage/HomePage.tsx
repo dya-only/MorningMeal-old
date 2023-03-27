@@ -39,7 +39,7 @@ const HomePage = (): JSX.Element => {
       
       axios({
         method: "post",
-        url: `http://ec2-52-78-245-7.ap-northeast-2.compute.amazonaws.com:8080/api/users/data`,
+        url: `/api/users/data`,
         data: { img: reader.result, id: localStorage.getItem('account') }
       })
     }
@@ -50,7 +50,7 @@ const HomePage = (): JSX.Element => {
     const getIMG = () => {
       axios({
         method: "get",
-        url: `http://ec2-52-78-245-7.ap-northeast-2.compute.amazonaws.com:8080/api/users/data?id=${localStorage.getItem('account')}`
+        url: `/api/users/data?id=${localStorage.getItem('account')}`
       }).then(async (resp) => {
         if (await resp.data.data.length == 0) {
           setImgExists(false)

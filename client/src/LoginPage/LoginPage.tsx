@@ -57,7 +57,7 @@ const LoginPage = (): JSX.Element => {
   }
 
   const getLogin = async () => {
-    await fetch(`http://ec2-52-78-245-7.ap-northeast-2.compute.amazonaws.com:8080/api/users/auth?id=${ id }&pw=${ pw }`, {
+    await fetch(`/api/users/auth?id=${ id }&pw=${ pw }`, {
       method: "GET",
     }).then(async (resp) => {
       const data = await resp.json()
